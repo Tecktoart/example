@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Example</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div style="margin-left: 1050px">
+  <% if user_signed_in? %> Welcome, <%= current_user.email %><br/>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+  <% else %>
+      <%= link_to 'Sign in', new_user_session_path, class: 'btn btn-default' %>
+      <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary btn-small' %> <% end %>
+      <%= link_to 'VK', user_omniauth_authorize_path(:vkontakte)%>
+      <%= link_to 'Facebook', user_omniauth_authorize_path(:facebook)%>
+
+
+</div>
+
+<%= yield %>
+
+
+</body>
+</html>
