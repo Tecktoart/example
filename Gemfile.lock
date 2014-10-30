@@ -153,6 +153,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.0)
   jquery-rails
+  oauth2
   omniauth
   omniauth-facebook
   omniauth-vkontakte
