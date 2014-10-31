@@ -23,13 +23,15 @@ class User < ActiveRecord::Base
     if user = User.where(:url => access_token.info.urls.Vkontakte).first
       user
     else
-
-      User.create!(:provider => access_token.provider,
+      User.create!(:provider => access_token.info.provider,
                    :url => access_token.info.urls.Vkontakte,
                    :username => access_token.info.name,
                    :nickname => access_token.extra.raw_info.domain,
-                   :email => access_token.extra.raw_info.domain,
                    :password => Devise.friendly_token[0,20])
     end
+  end
+
+  def email_required?
+    super && provider.blank?
   end
 end
