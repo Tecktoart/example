@@ -4,7 +4,7 @@ gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'omniauth-vkontakte'
+gem 'omniauth-vkontakte', github: 'mamantoha/omniauth-vkontakte'
 gem 'oauth2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

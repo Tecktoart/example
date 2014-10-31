@@ -2,18 +2,8 @@ Rails.application.routes.draw do
 
   resources :articles
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
-  
   resources :users, :only => [:index, :destroy]
   root :to => 'articles#index'
-
-  namespace :users do
-  get 'omniauth_callbacks/facebook'
-  end
-
-  namespace :users do
-  get 'omniauth_callbacks/vkontakte'
-  end
-
 
 
   # You can have the root of your site routed with "root"
