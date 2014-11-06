@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
+    @articles = @articles.where(user_id: params[:user_id]) if params[:user_id]
   end
 
   # GET /articles/1
@@ -69,6 +70,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:name, :description)
+      params.require(:article).permit(:name, :short_description, :description)
     end
 end

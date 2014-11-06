@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :users, :only => [:index, :destroy]
   root :to => 'articles#index'
 
+  resources :likes, only: [:create]
+  post 'like/:id', controller: :votes, action: :like
+  post 'unlike/:id', controller: :votes, action: :unlike
+
 
   # You can have the root of your site routed with "root"
   # Example of regular route:
