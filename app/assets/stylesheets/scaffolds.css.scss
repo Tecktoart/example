@@ -1,7 +1,5 @@
 
 body {
-  background-color: #fff;
-  color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -11,7 +9,6 @@ body {
 p, ol, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-
   line-height: 18px;
 }
 
@@ -144,3 +141,15 @@ section{background: #fff;
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;}
+
+#myNavbar a {
+  color: #ffffff;
+  }
+
+#myNavbar a:hover {
+  color: #ffffff ;
+ }
+
+.btn-primary
+{color: red }
+

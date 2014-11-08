@@ -1,10 +1,9 @@
 
 
-
 <% @articles.each do |article| %>
 <section class="articles" style="margin-left: 100px; word-wrap: break-word">
     <header class="article_header">
-        <img style="float: right; border-radius: 50%; width: 70px; height: 70px" href=<%= image_tag article.user.avatar.url, style: :medium %></img>
+        <img style="float: right; border-radius: 50%; width: 60px; height: 60px" href=<%= image_tag article.user.avatar.url, style: :medium %></img>
         <h2><%=link_to article.name, article_path(article)%></h2>
         <p style="color: grey">Create on <%=l article.created_at, format: :short %> | by <%=article.user.username %></p>
     </header>
@@ -17,7 +16,7 @@
         <span class="glyphicon glyphicon-pencil"></span>
     <% end %>
 
-    <%= link_to article_path(article),class:'glyphicon glyphicon-remove',method: :delete  do%>
+    <%= link_to article_path(article),class:'glyphicon glyphicon-remove', method: :delete  do%>
     <% end %>
 
 
@@ -37,7 +36,9 @@
 
   </div>
 </section>
- <% end %>
+<% end %>
+
+<div style="margin-left: 100px"><%= will_paginate @articles, renderer: BootstrapPagination::Rails %></div>
 
 
 

@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.paginate(:page => params[:page])
     @articles = @articles.where(user_id: params[:user_id]) if params[:user_id]
   end
 
@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.new(article_params)
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to articles_path, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
         format.js
       else
@@ -57,7 +57,9 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
+
       format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
+      format.js{}
       format.json { head :no_content }
     end
   end

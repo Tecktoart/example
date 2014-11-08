@@ -9,6 +9,8 @@ gem 'oauth2'
 gem 'paperclip', '~> 4.2'
 gem 'bootstrap-sass'
 gem 'open_uri_redirections'
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
