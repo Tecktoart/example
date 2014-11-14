@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable
   has_many :articles, dependent: :destroy
-  has_many :likes, -> { likes }, class_name: 'Vote', as: 'voteable'
+  has_many :likes, -> { likes }, class_name: 'Vote'
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
@@ -34,18 +34,6 @@ class User < ActiveRecord::Base
 
 
     end
-  end
-
-  def like(article)
-    article.likes.create(user_id: id)
-  end
-
-  def unlike(article)
-    article.likes.where(user_id: id).destroy_all
-  end
-
-  def likes?(article)
-    article.likes.where(user_id: id).present?
   end
 
 

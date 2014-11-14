@@ -1,0 +1,5 @@
+<h1 class="list-group-item active">Best articles</h1>
+
+<% @best_articles.each  do |best_article| %>
+     <%= link_to best_article.name, article_path(best_article), class:'list-group-item' %>
+<% end %>

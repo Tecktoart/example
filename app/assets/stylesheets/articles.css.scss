@@ -2,3 +2,44 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.articles{
+  margin-left: 10px;
+  word-wrap: break-word;
+}
+
+.avatar{
+  float: right;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+p.create_on{
+  color: grey;
+}
+
+.paginate{
+  margin-left: 500px;
+}
+
+.best_articles{
+  float: right;
+  width: 320px;
+  margin-top: -19px;
+}
+
+
+section{background: #fff;
+  width: 840px;
+  min-height: 222px;
+  margin: 2em auto;
+  box-shadow: 0px 1px 1px #aaa;
+  padding: 3em}
+
+.new_article{
+  max-width: 400px;
+}
+
+.list-group-item.active{
+  background-color: #7aaeff;
+}

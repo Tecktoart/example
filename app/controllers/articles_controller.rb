@@ -1,11 +1,14 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
+
   # GET /articles
   # GET /articles.json
   def index
     @articles = Article.paginate(:page => params[:page])
     @articles = @articles.where(user_id: params[:user_id]) if params[:user_id]
+    @best_articles = Article.order(:created_at).limit(10)
+
   end
 
   # GET /articles/1
@@ -36,7 +39,8 @@ class ArticlesController < ApplicationController
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
-  end
+
+      end
 
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
@@ -59,8 +63,8 @@ class ArticlesController < ApplicationController
     respond_to do |format|
 
       format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
-      format.js{}
       format.json { head :no_content }
+      format.js
     end
   end
 
@@ -74,4 +78,6 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:name, :short_description, :description)
     end
+
+
 end

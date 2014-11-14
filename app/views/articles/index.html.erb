@@ -1,12 +1,16 @@
+<div class="best_articles">
+  <%= render 'best_articles'%>
+</div>
 
+<% @articles.each  do |article| %>
 
-<% @articles.each do |article| %>
-<section class="articles" style="margin-left: 100px; word-wrap: break-word">
+<section id='article-<%= article.id%>' class="articles">
     <header class="article_header">
-        <img style="float: right; border-radius: 50%; width: 60px; height: 60px" href=<%= image_tag article.user.avatar.url, style: :medium %></img>
+        <img class="avatar" href=<%= image_tag article.user.avatar.url, style: :medium %></img>
         <h2><%=link_to article.name, article_path(article)%></h2>
-        <p style="color: grey">Create on <%=l article.created_at, format: :short %> | by <%=article.user.username %></p>
+        <p class="create_on">Create on <%=l article.created_at, format: :short %> | by <%=article.user.username %></p>
     </header>
+
   <div class="article_description">
     <p>
       <%= article.short_description%>
@@ -16,29 +20,24 @@
         <span class="glyphicon glyphicon-pencil"></span>
     <% end %>
 
-    <%= link_to article_path(article),class:'glyphicon glyphicon-remove', method: :delete  do%>
+    <%= link_to article_path(article),class:'glyphicon glyphicon-remove', method: :delete, remote: true  do%>
     <% end %>
 
 
-    <% if current_user.likes?(article) %>
+        <%= link_to "/like/#{article.id}", method: :post  do %>
+           <span class="glyphicon glyphicon-thumbs-up" style="color: green" id='like-<%= article.id %>'></span>
+        <% end %>
+
         <%= link_to "/unlike/#{article.id}", method: :post do %>
             <span class="glyphicon glyphicon-thumbs-up" style="color: red"></span>
         <% end %>
-    <% else %>
-        <%= link_to "/like/#{article.id}", method: :post do %>
-            <span class="glyphicon glyphicon-thumbs-up" style="color: green"></span>
-        <% end %>
-    <% end %>
-        <%= article.likes.count %>
+
+
+    <%= article.votes_for.size %> likes
+
   <% end %>
-
-
-
   </div>
 </section>
 <% end %>
-
-<div style="margin-left: 100px"><%= will_paginate @articles, renderer: BootstrapPagination::Rails %></div>
-
-
+<div class="paginate"><%= will_paginate @articles, renderer: BootstrapPagination::Rails %></div>
 
